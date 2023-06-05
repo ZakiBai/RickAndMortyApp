@@ -10,8 +10,8 @@ import UIKit
 final class CharacterCell: UITableViewCell {
     
     // MARK: -IB Outlets
-    @IBOutlet var characterNameLabel: UILabel!
-    @IBOutlet var characterImage: UIImageView! {
+    @IBOutlet weak var characterNameLabel: UILabel!
+    @IBOutlet weak var characterImage: UIImageView! {
         didSet {
             characterImage.contentMode = .scaleAspectFit
             characterImage.clipsToBounds = true

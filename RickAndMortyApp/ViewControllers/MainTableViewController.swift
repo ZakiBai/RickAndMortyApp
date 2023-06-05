@@ -25,7 +25,7 @@ final class MainTableViewController: UITableViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 80
+        tableView.rowHeight = 65
         tableView.backgroundColor = .black
         
         setupNavigationBar()
