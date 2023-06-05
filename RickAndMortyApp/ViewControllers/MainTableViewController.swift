@@ -27,7 +27,10 @@ final class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 80
         tableView.backgroundColor = .black
-
+        
+        setupNavigationBar()
+        setupSearchController()
+        fetchData(from: RickAndMortyAPI.baseURL.url)
     }
 
     // MARK: - Table view data source
@@ -42,7 +45,7 @@ final class MainTableViewController: UITableViewController {
         let character = isFiltering
         ? filteredCharacter[indexPath.row]
         : rickAndMorty?.results[indexPath.row]
-        //configure
+        cell.configure(with: character)
         return cell
     }
     
@@ -64,7 +67,6 @@ final class MainTableViewController: UITableViewController {
     }
     
     // MARK: - Private methods
-    
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -79,7 +81,7 @@ final class MainTableViewController: UITableViewController {
         }
     }
 
-    private func setupNavigationController() {
+    private func setupNavigationBar() {
         title = "Rick and Morty"
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
