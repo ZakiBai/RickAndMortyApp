@@ -11,6 +11,9 @@ final class CharacterInfoViewController: UIViewController {
 
     
     @IBOutlet var characterImage: UIImageView!
+    
+    var character: Character!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
