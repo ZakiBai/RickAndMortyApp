@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Main Table View Controller-->
         <scene sceneID="FWa-6v-3Z1">
             <objects>
-                <tableViewController id="yJH-ge-Okf" sceneMemberID="viewController">
+                <tableViewController id="yJH-ge-Okf" customClass="MainTableViewController" customModule="RickAndMortyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="epZ-pD-Q69">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,6 +49,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <connections>
+                                    <outlet property="characterImage" destination="iUG-J4-ced" id="Fe7-bi-7f7"/>
+                                    <outlet property="characterNameLabel" destination="lK8-Dk-lNK" id="qyl-n9-Alq"/>
                                     <segue destination="MEE-pJ-VKM" kind="show" id="XcO-Xl-oM9"/>
                                 </connections>
                             </tableViewCell>
@@ -67,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="-454.19847328244271" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Info View Controller-->
         <scene sceneID="0Co-Ao-8JD">
             <objects>
-                <viewController id="MEE-pJ-VKM" sceneMemberID="viewController">
+                <viewController id="MEE-pJ-VKM" customClass="CharacterInfoViewController" customModule="RickAndMortyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iex-NA-AoL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,6 +99,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="characterImage" destination="QG6-XM-E2N" id="5JJ-LS-aq5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rS-ys-ZLm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,7 +110,7 @@
         <!--Episodes-->
         <scene sceneID="nsN-gV-Z1e">
             <objects>
-                <tableViewController id="uqa-nb-DDx" sceneMemberID="viewController">
+                <tableViewController id="uqa-nb-DDx" customClass="EpisodesTableViewController" customModule="RickAndMortyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="iRr-8y-4zW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="1903" y="4"/>
         </scene>
-        <!--View Controller-->
+        <!--Episode Details View Controller-->
         <scene sceneID="dhr-dD-U1c">
             <objects>
-                <viewController id="nAu-s1-nNB" sceneMemberID="viewController">
+                <viewController id="nAu-s1-nNB" customClass="EpisodeDetailsViewController" customModule="RickAndMortyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ura-NY-MV8">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +177,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="64" id="OOZ-GW-5X7" customClass="CharacterCell" customModule="RickAndMortyApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OOZ-GW-5X7" id="mjE-xM-qvq">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OOZ-GW-5X7" id="mjE-xM-qvq" customClass="CharacterCell" customModule="RickAndMortyApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -222,15 +227,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kg3-bt-pAQ"/>
+                    <connections>
+                        <outlet property="episodeDescriptionLabel" destination="kph-x6-yvl" id="edz-ge-aSf"/>
+                        <outlet property="tableView" destination="zeq-cg-h9o" id="oy5-B8-NVs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzd-VH-Egx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2661.8320610687024" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Info View Controller-->
         <scene sceneID="UzU-Q5-EyI">
             <objects>
-                <viewController id="G57-pw-j5z" sceneMemberID="viewController">
+                <viewController id="G57-pw-j5z" customClass="CharacterInfoViewController" customModule="RickAndMortyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sfB-k8-R1E">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
